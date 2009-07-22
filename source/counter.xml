@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="Hello Wave" height="300">
+    <Require feature="wave-preview" /> 
+  </ModulePrefs>
+  <Content type="html">
+<![CDATA[     
+
+<script type="text/javascript" src="http://qxwave.appspot.com/client/script/qxwave.counter.js"></script>
+<script type="text/javascript">
+gadgets.util.registerOnLoadHandler(function() {
+	if (window.qx && qx.event && qx.event.handler && qx.event.handler.Application) qx.event.handler.Application.onScriptLoaded();
+});
+</script>
+   
+]]>
+  </Content>
+</Module>

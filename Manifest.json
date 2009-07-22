@@ -1,0 +1,34 @@
+{
+  "info" : 
+  {
+    "name" : "qxwave",
+
+    "summary" : "Example qooxdoo Google Wave gadgets",
+    "description" : "qooxdoo versions of the google wave gadgets from the wave gadget tutorial.",
+    
+    "homepage" : "http://qxwave.appspot.com/client/index.html",
+
+    "license" : "BSD",
+    "authors" : 
+    [
+      {
+        "name" : "Fabian Jakobs (fjakobs)",
+        "email" : "fabian.jakobs@web.de"
+      }
+    ],
+
+    "version" : "trunk",
+    "qooxdoo-versions": ["0.8.3-pre"]
+  },
+  
+  "provides" : 
+  {
+    "namespace"   : "qxwave",
+    "encoding"    : "utf-8",
+    "class"       : "source/class",
+    "resource"    : "source/resource",
+    "translation" : "source/translation",
+    "type"        : "application"
+  }
+}
+
