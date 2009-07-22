@@ -1,0 +1,47 @@
+{
+  "name"    : "qxwave.auction",
+
+  "include" :
+  [
+    {
+      "path" : "${QOOXDOO_PATH}/tool/data/config/application.json"
+    }
+  ],
+
+  "let" :
+  {
+    "APPLICATION"  : "qxwave.auction",
+    "QOOXDOO_PATH" : "../../../../Desktop/dev/org.qooxdoo.sdk/qooxdoo",
+    "QXTHEME"      : "qx.theme.Modern",
+    "LOCALES"      : [ "en" ],
+    "ROOT"         : ".",
+    "BUILD_PATH"   : "../client"
+  },
+
+  "jobs" :
+  {
+    "build-files" :
+    {
+      "copy-files" :
+      {
+        "=files" :
+        [
+          "auction.xml",
+          "auction.html"
+        ]
+      }
+    },
+    
+    "build-script" :
+    {
+      "compile-dist" :
+      {
+        "uris"   :
+        {
+          "script"   : "http://qxwave.appspot.com/client/script",
+          "resource" : "http://qxwave.appspot.com/client/resource"
+        }
+      }    
+    }
+  }
+}

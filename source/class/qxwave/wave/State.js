@@ -9,6 +9,9 @@ qx.Class.define("qxwave.wave.State",
   
     this.__state = {};
     this.__callback = function() {};
+    this.__callbackContext = window;
+    
+    this.__fireChangeEvent();
   },
 
   members :
@@ -22,6 +25,11 @@ qx.Class.define("qxwave.wave.State",
       }
     },
     
+    getKeys : function() {
+      return qx.lang.Object.getKeys(this.__state);
+    },
+    
+    
     submitDelta : function(delta)
     {
       for (var key in delta)
@@ -33,12 +41,17 @@ qx.Class.define("qxwave.wave.State",
       this.__fireChangeEvent();
     },    
     
-    setStateCallback : function(callback) {
+    setStateCallback : function(callback, opt_context) 
+    {
       this.__callback = callback;
+      this.__callbackContext = opt_context || window;
     },
     
-    __fireChangeEvent : function() {
-      qx.event.Timer.once(this.__callback, window, 0);
+    __fireChangeEvent : function() 
+    {
+      qx.event.Timer.once(function() {
+        this.__callback.call(this.__callbackContext)
+      }, this, 0);
     }
   }
 });

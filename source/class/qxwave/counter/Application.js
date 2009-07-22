@@ -12,11 +12,10 @@ qx.Class.define("qxwave.counter.Application",
   {
     main : function()
     {
-      // Call super class
       this.base(arguments);
 
       this.wave = new qxwave.wave.WaveFactory().getWave();
-      this.wave.setStateCallback(qx.lang.Function.bind(this.stateUpdate, this, this.wave));
+      this.wave.setStateCallback(this.stateUpdate, this);
 
       var grid = new qx.ui.layout.Grid(10, 10);
       grid.setRowFlex(0, 1);
@@ -48,8 +47,8 @@ qx.Class.define("qxwave.counter.Application",
       this.stateUpdate(this.wave);
     },    
     
-    stateUpdate : function(wave) {
-      this.counter.setLabel("The count is " + wave.getState().get('count', '0'));
+    stateUpdate : function() {
+      this.counter.setLabel("The count is " + this.wave.getState().get('count', '0'));
     },
     
     incrementCounter : function() 
