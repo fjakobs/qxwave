@@ -35,16 +35,19 @@ qx.Class.define("qxwave.demo.Application",
     
     addGadget : function(wave)
     {
-      var win = new qx.ui.window.Window("Gadget").set({
+      var caption = "Gadget (" + wave.getViewer().getDisplayName() + ")";
+      var win = new qx.ui.window.Window(caption).set({
         contentPadding: 0,
         allowMinimize: false
       });
       win.setLayout(new qx.ui.layout.Grow());
-      win.add(this.createGadget(wave));
+      win.add(this.createGadget(wave).set({
+        padding: 10
+      }));
             
       win.moveTo(this.left, this.top);
-      this.left += 20;
-      this.top += 20;
+      this.left += 50;
+      this.top += 30;
       
       win.open();
     }
