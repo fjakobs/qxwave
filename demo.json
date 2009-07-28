@@ -1,5 +1,5 @@
 {
-  "name"    : "qxwave",
+  "name"    : "qxwave.demo",
 
   "include" :
   [
@@ -10,10 +10,11 @@
 
   "let" :
   {
-    "APPLICATION"  : "qxwave",
+    "APPLICATION"  : "qxwave.demo",
     "QOOXDOO_PATH" : "../../../../Desktop/dev/org.qooxdoo.sdk/qooxdoo",
     "QXTHEME"      : "qx.theme.Modern",
     "LOCALES"      : [ "en" ],
-    "ROOT"         : "."
+    "ROOT"         : ".",
+    "BUILD_PATH"   : "../client"
   }
 }
