@@ -6,10 +6,18 @@ qx.Class.define("qxwave.wave.WaveFactory",
   {
     getWave : function()
     {
-      if (this.isInWaveContainer()) {
+      if (this.isInWaveContainer())
+      {
         return wave;
-      } else {
-        return new qxwave.wave.Wave();
+      }
+      else
+      {
+        var state = new qxwave.wave.State();
+        var participants = [
+          new qxwave.wave.Participant("Fabian Jakobs", "http://www.gravatar.com/avatar/a6d98536d90d2987d40a6abe731805ca")
+        ];
+        
+        return new qxwave.wave.Wave(state, participants);
       }
     },
     

@@ -3,32 +3,39 @@ qx.Class.define("qxwave.wave.Wave",
   extend : qx.core.Object,
 
 
-  construct : function()
+  construct : function(state, participantList, viewerIndex)
   {
     this.base(arguments);
   
-    this.__state = new qxwave.wave.State();
-    
-    this.__participants = [
-      new qxwave.wave.Participant("Fabian Jakobs", "http://www.gravatar.com/avatar/a6d98536d90d2987d40a6abe731805ca")
-    ];
+    this.__state = state;    
+    this._setParticipants(participantList);
+    this.__viewerIndex = viewerIndex || 0;
     
     this.__participantCallback = function() {};    
     this.__fireParticipantCallback();
   },
 
   members :
-  {
+  {    
     getState : function() {
       return this.__state;
     },    
     
-    setStateCallback : function(callback, opt_context) {
-      this.__state.setStateCallback(callback, opt_context);
+    setStateCallback : function(callback, opt_context)
+    {
+      if (this.__stateCallbackId) {
+        this.__state.removeListenerById(this.__stateCallbackId);
+      }
+      
+      this.__stateCallbackId = this.__state.addListener("changeState", callback, opt_context);
     },    
     
     setParticipantCallback : function(callback, opt_context) {
       this.__participantCallback = qx.lang.Function.bind(callback, opt_context || window);
+    },
+    
+    _setParticipants : function(participantList) {
+      this.__participants = participantList
     },
     
     getParticipants : function() {
@@ -36,7 +43,7 @@ qx.Class.define("qxwave.wave.Wave",
     },   
     
     getViewer : function() {
-      return this.__participants[0];
+      return this.__participants[this.__viewerIndex];
     },
     
     isInWaveContainer : function() {
